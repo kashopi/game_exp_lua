@@ -23,7 +23,7 @@ function Starfield:draw()
     local pr,pg,pb,pa = love.graphics.getColor()
     for i, s in ipairs(Starfield)
     do
-        print(s.x, s.y, s.magnitude)
+        --print(s.x, s.y, s.magnitude)
         if s.magnitude == 1 then
             love.graphics.setColor(128, 128, 128)
             love.graphics.points(s.x, s.y)

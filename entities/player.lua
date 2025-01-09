@@ -28,7 +28,7 @@ function Player:update(dt)
         end
         local sx = dx * self.speed_x -- * dt
         local sy = dy * self.speed_y -- * dt
-        print(sx, sy)
+        --print(sx, sy)
         self.pbody:setLinearVelocity(sx, sy)
     else
         self.pbody:setLinearVelocity(0, 0)
