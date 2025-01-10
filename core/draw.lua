@@ -1,11 +1,7 @@
 
 
-function drawAll()
-    Starfield:draw()
-    Player:draw()
-    Bullets:draw()
-    Enemies:draw()
-    Hud:draw()
+function DrawAll()
+
 end
 
-return drawAll
+return DrawAll
