@@ -10,7 +10,7 @@ function love.load()
     EventsManager:init()
     EventsManager:subscribe('blah', sample_ev1)
     EventsManager:subscribe('blah', sample_ev2)
-    EventsManager:trigger_callbacks('blah', 'kk')
+    EventsManager:send_event('blah', "123")
 end
 
 function love.draw()
@@ -18,7 +18,7 @@ function love.draw()
 end
 
 function love.update(dt)
-    --EventsManager()
+    EventsManager:process_events()
     UpdateManager(dt)
 end
 
