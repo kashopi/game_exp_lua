@@ -5,12 +5,19 @@ function love.load()
     Init = require("init/init")
     Init()
 
+    require('lib.events')
+    EventsManager:init()
+
     EntitiesManager = require('entities.manager')
+
     Physics = require("core/physics")
     Physics:init()
 
     require('core.sounds')
     Sounds:init()
+
+    require('core.controls')
+    Controls:init()
 
     Player = require("entities/player")
     Player:init()
@@ -23,13 +30,6 @@ function love.load()
     require('entities.bullet')
     EntitiesManager:add(Bullets, true, true)
 
-    local js = love.joystick.getJoysticks()
-    if #js == 0 then
-        Joystick = nil
-    else
-        Joystick = js[1]
-        print("Detected: ",Joystick:getName())
-    end
 
 end
 
@@ -40,17 +40,8 @@ end
 function love.update(dt)
     --if love.keyboard.isDown("up") then  end
     --if love.keyboard.isDown("down") then  end
-    if Joystick then
-        if Joystick:isDown(1) then
-            print("Button!")
-            launch_test()
-        end
-    elseif love.keyboard.isDown("space") then
-        launch_test()
-    end
-
-    if love.keyboard.isDown("escape") then love.event.quit() end
-
+    EventsManager:process_events()
+    Controls:update(dt)
     UpdatableEntities:updateAll(dt)
     Physics.world:update(dt)
     --print(love.timer.getFPS())
