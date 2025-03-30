@@ -1,3 +1,26 @@
+--[[
+
+require('lib.events')
+
+EventsManager:init()
+EventsManager:subscribe('blah', sample_ev1)
+EventsManager:subscribe('blah', sample_ev2)
+EventsManager:send_event('blah', "123")
+
+in update:     EventsManager:process_events()
+
+
+function sample_ev1(value)
+    print("sample_ev1 received ", value)
+end
+
+function sample_ev2(value)
+    print("sample_ev2 received ", value)
+end
+
+]]--
+
+
 EventsManager = {}
 
 function EventsManager:init()

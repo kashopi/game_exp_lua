@@ -1,31 +1,61 @@
 
+
 function love.load()
     require('lib.utils')
     Init = require("init/init")
     Init()
 
-    DrawManager = require('core.draw')
-    UpdateManager = require('core.update')
-    require('lib.events')
-    EventsManager:init()
-    EventsManager:subscribe('blah', sample_ev1)
-    EventsManager:subscribe('blah', sample_ev2)
-    EventsManager:send_event('blah', "123")
+    EntitiesManager = require('entities.manager')
+    Physics = require("core/physics")
+    Physics:init()
+
+    require('core.sounds')
+    Sounds:init()
+
+    Player = require("entities/player")
+    Player:init()
+    EntitiesManager:add(Player, true, true)
+
+    require("fx/starfield")
+    Starfield:init()
+    EntitiesManager:add(Starfield, true, true)
+
+    require('entities.bullet')
+    EntitiesManager:add(Bullets, true, true)
+
+    local js = love.joystick.getJoysticks()
+    if #js == 0 then
+        Joystick = nil
+    else
+        Joystick = js[1]
+        print("Detected: ",Joystick:getName())
+    end
+
 end
 
 function love.draw()
-    DrawManager()
+    DrawableEntities:drawAll()
 end
 
 function love.update(dt)
-    EventsManager:process_events()
-    UpdateManager(dt)
+    --if love.keyboard.isDown("up") then  end
+    --if love.keyboard.isDown("down") then  end
+    if Joystick then
+        if Joystick:isDown(1) then
+            print("Button!")
+            launch_test()
+        end
+    elseif love.keyboard.isDown("space") then
+        launch_test()
+    end
+
+    if love.keyboard.isDown("escape") then love.event.quit() end
+
+    UpdatableEntities:updateAll(dt)
+    Physics.world:update(dt)
+    --print(love.timer.getFPS())
 end
 
-function sample_ev1(value)
-    print("sample_ev1 received ", value)
-end
-
-function sample_ev2(value)
-    print("sample_ev2 received ", value)
+function launch_test()
+    Bullets:fire_bullet(Player.x+15, Player.y-10)
 end

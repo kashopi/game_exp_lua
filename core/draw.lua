@@ -1,7 +1,15 @@
+DrawableEntities = {}
 
-
-function DrawAll()
-
+function DrawableEntities:drawAll()
+  for i, d in ipairs(DrawableEntities)
+  do
+    DrawableEntities[i]:draw()
+  end
 end
 
-return DrawAll
+function DrawableEntities:add(entity)
+  table.insert(DrawableEntities, entity)
+end
+
+
+return DrawableEntities

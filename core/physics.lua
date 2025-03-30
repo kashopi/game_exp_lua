@@ -9,7 +9,7 @@ end
 function beginContact(a, b, coll)
     local textA = a:getUserData()
 	local textB = b:getUserData()
-    print("beingContact", textA, textB, coll)
+    print("beginContact", textA, textB, coll)
 end
 
 function endContact(a, b, coll)
@@ -23,3 +23,5 @@ end
 function postSolve(a, b, coll, normalimpulse, tangentimpulse)
     --print("postSolve", a, b, coll)
 end
+
+return Physics
