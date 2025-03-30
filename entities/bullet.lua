@@ -4,7 +4,7 @@ Bullets = {}
 function Bullets:draw()
     for i,v in ipairs(Bullets) do
         love.graphics.circle("line", v.x, v.y, 5)
-        print("#Bullets: %d (bc:%d)", #Bullets, Physics.world:getBodyCount())
+        --print("#Bullets: %d (bc:%d)", #Bullets, Physics.world:getBodyCount())
     end
 end
 
@@ -19,7 +19,7 @@ function Bullets:update(dt)
 end
 
 function Bullets:fire_bullet(px, py)
-    print("fire: ", px, py)
+    --print("fire: ", px, py)
     local bullet = {
         x=px,
         y=py,

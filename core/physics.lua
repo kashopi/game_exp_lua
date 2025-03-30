@@ -9,7 +9,7 @@ end
 function beginContact(a, b, coll)
     local textA = a:getUserData()
 	local textB = b:getUserData()
-    print("beginContact", textA, textB, coll)
+    --print("beginContact", textA, textB, coll)
 end
 
 function endContact(a, b, coll)
