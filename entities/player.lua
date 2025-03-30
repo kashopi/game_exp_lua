@@ -1,18 +1,23 @@
 Player = {}
-Player.x = 400
-Player.y = 750
-Player.w = 40
-Player.h = 40
-Player.speed_x = 300
-Player.speed_y = 300
-Player.is_taking_damage = false
-Player.pbody = love.physics.newBody(Physics.world, Player.x, Player.y, "dynamic")
-Player.pshape = love.physics.newRectangleShape(Player.w/2, Player.h/2, Player.w, Player.h)
-Player.pfixture = love.physics.newFixture(Player.pbody, Player.pshape)
-Player.pbody:setFixedRotation(true)
+
 
 local function normalize_speed_vector(dx, dy)
 end
+
+function Player:init()
+    Player.x = 400
+    Player.y = 750
+    Player.w = 40
+    Player.h = 40
+    Player.speed_x = 300
+    Player.speed_y = 300
+    Player.is_taking_damage = false
+    Player.pbody = love.physics.newBody(Physics.world, Player.x, Player.y, "dynamic")
+    Player.pshape = love.physics.newRectangleShape(Player.w/2, Player.h/2, Player.w, Player.h)
+    Player.pfixture = love.physics.newFixture(Player.pbody, Player.pshape)
+    Player.pbody:setFixedRotation(true)
+end
+
 
 function Player:update(dt)
     local dx, dy = 0, 0
