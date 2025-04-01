@@ -27,6 +27,7 @@ function move_enemies()
     end
     -- print("Enemies # %d", #Enemies)
 end
+
 function add_enemies()
     if math.random(100) > 99 then
         table.insert(Enemies, get_new_enemy())

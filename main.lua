@@ -30,6 +30,8 @@ function love.load()
     require('entities.bullet')
     EntitiesManager:add(Bullets, true, true)
 
+    require('entities.enemy')
+    EntitiesManager:add(Enemies, true, true)
 
 end
 
