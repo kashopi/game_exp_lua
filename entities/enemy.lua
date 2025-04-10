@@ -46,9 +46,13 @@ function get_new_enemy()
     enemy.pbody=love.physics.newBody(Physics.world, enemy.x, enemy.y, "dynamic")
     enemy.pshape=love.physics.newRectangleShape(enemy.w/2, enemy.h/2, enemy.w, enemy.h)
     enemy.pfixture=love.physics.newFixture(enemy.pbody, enemy.pshape)
+    local userdata = {}
+    userdata.type = 'kill_enemy'
+    userdata.object = enemy
+    enemy.pfixture:setUserData(userdata)
     enemy.pbody:setFixedRotation(true)
     enemy.pbody:setLinearVelocity(0, rs)
     enemy.pbody:setMass(rm)
-    print(rx,ry, #Enemies)
+    --print(rx,ry, #Enemies)
     return enemy
 end

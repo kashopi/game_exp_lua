@@ -9,7 +9,12 @@ end
 function beginContact(a, b, coll)
     local textA = a:getUserData()
 	local textB = b:getUserData()
-    --print("beginContact", textA, textB, coll)
+    print("beginContact", textA, textB, coll)
+    if textA then
+        if textA.type=='kill_enemy' then
+            print("Die!", textA.object)
+        end
+    end
 end
 
 function endContact(a, b, coll)
