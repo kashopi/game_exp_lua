@@ -20,15 +20,7 @@ end
 
 
 function Player:update(dt)
-    local dx, dy = 0, 0
-    if Joystick then
-        dx, dy = Joystick:getAxes()
-    else
-        if love.keyboard.isDown("up") then dy = -1 end
-        if love.keyboard.isDown("down") then dy = 1 end
-        if love.keyboard.isDown("left") then dx = -1 end
-        if love.keyboard.isDown("right") then dx = 1 end
-    end
+    local dx, dy = Controls:get_axis()
 
     if dx~=0 or dy~=0 then
         if dx~=0 and dy~=0 then

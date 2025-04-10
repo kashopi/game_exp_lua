@@ -40,8 +40,6 @@ function love.draw()
 end
 
 function love.update(dt)
-    --if love.keyboard.isDown("up") then  end
-    --if love.keyboard.isDown("down") then  end
     EventsManager:process_events()
     Controls:update(dt)
     UpdatableEntities:updateAll(dt)
