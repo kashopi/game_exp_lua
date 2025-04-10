@@ -33,6 +33,11 @@ function love.load()
     require('entities.enemy')
     EntitiesManager:add(Enemies, true, true)
 
+    require('entities.hud')
+    Hud:init()
+    EntitiesManager:add(Hud, false, false)
+
+    print("hash:", Get_random_hash())
 end
 
 function love.draw()
